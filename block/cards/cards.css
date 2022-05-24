@@ -1,7 +1,7 @@
 .cards {
     padding: 0;
     max-width: 880px;
-    margin: 51px auto;
+    margin: 51px auto 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

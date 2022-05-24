@@ -5,4 +5,13 @@
     height: 19px;
     margin-bottom: -1px;
     align-self: center;
+    transition: 0.4s ease-in-out;
+}
+
+.card__like:hover {
+    opacity: 0.5;
+}
+
+.card__like:active {
+    background-image: url(../../../image/card_like_acitive.svg);
 }
