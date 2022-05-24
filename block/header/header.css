@@ -1,0 +1,14 @@
+.header {
+    max-width: 880px;
+    width: 100%;
+    min-height: 119px;
+    margin: auto;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+@media screen and (max-width: 1280px) {
+    .header {
+        min-height: calc(84px + (119 - 84) * (100vw - 320px)/ (1280 - 320));
+    }
+    
+}

@@ -1,0 +1,8 @@
+.card__like {
+    background-image: url(../../../image/card__like.svg);
+    background-repeat: no-repeat;
+    min-width: 22px;
+    height: 19px;
+    margin-bottom: -1px;
+    align-self: center;
+}

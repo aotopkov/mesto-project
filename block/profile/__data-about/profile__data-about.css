@@ -1,0 +1,16 @@
+.profile__data-about {
+    max-width: 336px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #fff;
+}
+
+@media screen and (max-width: 1280px) {
+    .profile__data-about {
+    font-size: calc(14px + (18 - 14) * (100vw - 320px) / (1280 - 320));
+    line-height: calc(17px + (22 - 17) * (100vw - 320px) / (1280 - 320));
+    }
+    
+}
