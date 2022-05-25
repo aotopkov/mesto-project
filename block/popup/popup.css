@@ -1,6 +1,5 @@
 .popup {
-    /* Свойство display: none или flex */
-    display: flex;
+    display: none;
     align-items: center;
     position: fixed;
     top: 0;
