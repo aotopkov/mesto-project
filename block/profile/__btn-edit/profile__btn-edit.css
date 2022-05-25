@@ -1,0 +1,17 @@
+.profile__btn-edit {
+    background-image: url(../../../image/profile__btn_edit.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 10px;
+    width: 22px;
+    height: 22px;
+    margin-left: 16px;
+    border: 1px solid #fff;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+.profile__btn-edit:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,9 @@
+.card__like-pseudo {
+    display: inline-block;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 19px;
+    margin-bottom: -1px;
+    align-self: center;
+}
