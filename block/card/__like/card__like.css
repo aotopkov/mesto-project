@@ -9,6 +9,7 @@
     align-self: center;
     margin-bottom: -1px;
     transition: 0.25s ease-in-out;
+    cursor: pointer;
 
 }
 
