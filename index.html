@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css" />
     <meta name="description" content="Третий проект. Адаптивная вёрстка. Web+ 14coral">
     <meta name="author" content="сверстал Александр Отопков" />
+    <link rel="stylesheet" href="pages/index.css" />
     <title>Mesto project</title>
 </head>
 
 <body class="page">
     <header class="header">
-        <img src="./image/header__logo.svg" alt="" class="header__logo">
+        <img src="./image/header__logo.svg" alt="логотип страницы" class="header__logo">
     </header>
     <main>
         <section class="profile">
             <img src="./image/avatar.jpg" alt="фотография профиля" class="profile__avatar">
             <div class="profile__data">
                 <h1 class="profile__data-name">Жак-Ив Кусто</h1>
-                <div class="profile__btn-edit"></div>
+                <button class="profile__btn-edit"></button>
                 <p class="profile__data-about">Исследователь океана</p>
             </div>
-            <div class="profile__btn-add"></div>
+            <button class="profile__btn-add"></button>
         </section>
         <section class="content">
             <ul class="cards">
@@ -30,67 +30,61 @@
                     <img src="./image/dubldom.jpg" alt="дом на сопке" class="card__image">
                     <div class="card__info">
                         <h2 class="card__name">Дубльдом Кандалакша</h2>
-                        <label class="card__like-label"><input type="checkbox" name="card__like"
-                                class="card__like-item"><span class="card__like-pseudo"></span></label>
+                        <button class="card__like"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./image/hibiny.jpg" alt="Осенние горы Хибины" class="card__image">
                     <div class="card__info">
                         <h2 class="card__name">Золото в Хибинах</h2>
-                        <label class="card__like-label"><input type="checkbox" name="card__like"
-                                class="card__like-item"><span class="card__like-pseudo"></span></label>
+                        <button class="card__like"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./image/ladoga.jpg" alt="на лодках по Ладожскому озеру" class="card__image">
                     <div class="card__info">
                         <h2 class="card__name">Ладожские шхеры</h2>
-                        <label class="card__like-label"><input type="checkbox" name="card__like"
-                                class="card__like-item"><span class="card__like-pseudo"></span></label>
+                        <button class="card__like"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./image/osetia.jpg" alt="Снежные вершины гор и осень" class="card__image">
                     <div class="card__info">
                         <h2 class="card__name">Северная Осетия</h2>
-                        <label class="card__like-label"><input type="checkbox" name="card__like"
-                                class="card__like-item"><span class="card__like-pseudo"></span></label>
+                        <button class="card__like"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./image/permskii.jpg" alt="Усьвинские столбы в Пермском крае" class="card__image">
                     <div class="card__info">
                         <h2 class="card__name">Пермский край</h2>
-                        <label class="card__like-label"><input type="checkbox" name="card__like"
-                                class="card__like-item"><span class="card__like-pseudo"></span></label>
+                        <button class="card__like"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./image/crimea.jpg" alt="Новый свет, Крым" class="card__image">
                     <div class="card__info">
                         <h2 class="card__name">Крым</h2>
-                        <label class="card__like-label"><input type="checkbox" name="card__like"
-                                class="card__like-item"><span class="card__like-pseudo"></span></label>
+                        <button class="card__like"></button>
                     </div>
                 </li>
             </ul>
         </section>
-        <div class="popup">
-            <div class="popup__container">
-                <div class="popup__forms">
-                    <h2 class="popup__name">Редактировать профиль</h2>
-                    <input type="text" name="popup__edit-name" class="popup__form-text" placeholder="введите имя" value="Жак-Ив Кусто">
-                    <input type="text" name="popup__edit-about" class="popup__form-text" placeholder="о себе" value="Исследователь океана">
-                    <div class="popup__btn-save"><span>Сохранить</span></div>
-                </div>
-                <div class="popup__btn-exit"></div>
-            </div>
-        </div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <form class="popup__forms">
+                <label class="popup__name">Редактировать профиль</label>
+                <input type="text" name="popup__edit-name" class="popup__form-text" placeholder="введите имя" value="Жак-Ив Кусто">
+                <input type="text" name="popup__edit-about" class="popup__form-text" placeholder="о себе" value="Исследователь океана">
+                <button class="popup__btn-save"><span>Сохранить</span></button>
+            </form>
+            <button class="popup__btn-exit"></button>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 .profile {
     max-width: 880px;
-    margin: 40px auto 0;
+    margin: auto;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
     column-gap: 30px;

@@ -16,7 +16,7 @@
     
 }
 
-.popup__btn-save:hover {
+.popup__btn-save:not(:active):hover {
     opacity: 0.6;
 }
 

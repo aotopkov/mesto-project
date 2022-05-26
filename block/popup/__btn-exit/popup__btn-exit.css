@@ -2,6 +2,8 @@
     position: absolute;
     top: -40px;
     right: -40px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
     background-image: url(../../../image/popup__btn-exit.svg);
     background-repeat: no-repeat;
     background-size: contain;

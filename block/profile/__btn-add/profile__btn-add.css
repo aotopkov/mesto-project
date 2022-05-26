@@ -4,6 +4,7 @@
     border: 2px solid #fff;
     border-radius: 2px;
     margin-left: auto;
+    background-color: #000;
     background-image: url(../../../image/profile__btn-add.svg);
     background-repeat: no-repeat;
     background-position: center;

@@ -1,10 +1,17 @@
 .cards {
     padding: 0;
+    padding-top: 51px;
+    margin: auto;
     max-width: 880px;
-    margin: 51px auto 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 20px;
     column-gap: 17px;
+}
+
+@media screen and (max-width: 1280px) {
+    .cards {
+        padding-top: calc(36px + (51 - 36) * (100vw - 320px) / (1280 - 320));
+    }
 }

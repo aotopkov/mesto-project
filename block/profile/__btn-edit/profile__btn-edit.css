@@ -1,17 +1,28 @@
 .profile__btn-edit {
+    box-sizing: border-box;
+    background-color: #000;
     background-image: url(../../../image/profile__btn_edit.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10px 10px;
+    background-size: 10px;
     width: 22px;
     height: 22px;
     margin-left: 16px;
     border: 1px solid #fff;
-    align-self: flex-end;
+    align-self: baseline;
     cursor: pointer;
     transition: 0.25s ease-in-out;
 }
 
 .profile__btn-edit:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 1280px) {
+    .profile__btn-edit {
+        width: calc(18px + (22 - 18) * (100vw - 320px) / (1280 - 320));
+        height: calc(18px + (22 - 18) * (100vw - 320px) / (1280 - 320));
+        background-size: calc(7px + (10 - 7) * (100vw - 320px) / (1280 - 320));
+    }
+    
 }
