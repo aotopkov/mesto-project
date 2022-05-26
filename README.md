@@ -12,5 +12,5 @@
 
 - Фотографии в карточках личного авторства из путешествий по России.
 
-
+страница на GitPages - https://aotopkov.github.io/mesto-project/ 
 
