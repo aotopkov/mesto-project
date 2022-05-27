@@ -13,6 +13,7 @@
     color: #fff;
     transition: 0.25s ease-in-out;
     cursor: pointer;
+    border: 0;
     border-radius: 2px;
     
 }
@@ -25,6 +26,8 @@
     .popup__btn-save {
         font-size: calc(14px + (18 - 14) * (100vw - 320px) / (1280 - 320));
         line-height: calc(17px + (22 - 17) * (100vw - 320px) / (1280 - 320));
+        margin-top: calc(45px + (48 - 45) * (100vw - 320px) / (1280 - 320));
+        height: calc(46px + (50 - 46) * (100vw - 320px) / (1280 - 320));
     }
     
 }
