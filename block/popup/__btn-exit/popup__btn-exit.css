@@ -1,4 +1,5 @@
 .popup__btn-exit {
+    padding: 0;
     position: absolute;
     top: -40px;
     right: -40px;

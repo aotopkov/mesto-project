@@ -8,6 +8,7 @@
     height: 19px;
     align-self: center;
     margin-bottom: -1px;
+    padding: 0;
     transition: 0.25s ease-in-out;
     cursor: pointer;
 
