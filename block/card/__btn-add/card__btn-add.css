@@ -15,19 +15,19 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .profile__btn-add {
+    .card__btn-add {
         width: calc(282px + (150 - 282) * (100vw - 320px) / (1280 - 320));
     }
     
 }
 
 @media screen and (max-width: 1003px) {
-    .profile__btn-add {
-        margin: 36px 0 0;
+    .card__btn-add {
+        margin: 36px auto 0;
     }
     
 }
 
-.profile__btn-add:hover {
+.card__btn-add:hover {
     opacity: 0.6;
 }
