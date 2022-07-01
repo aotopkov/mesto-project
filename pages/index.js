@@ -61,7 +61,7 @@ function resetProfileData() {
   profileAboutEdit.value = "";
 }
 
-function profileEdit(evt) {
+function editProfile(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameEdit.value;
   profileAbout.textContent = profileAboutEdit.value;
@@ -69,7 +69,7 @@ function profileEdit(evt) {
   resetProfileData()
 }
 
-profileEditForm.addEventListener("submit", profileEdit);
+profileEditForm.addEventListener("submit", editProfile);
 
 profileBtnExit.addEventListener('click', () => {
   closePopup(popupProfile);
@@ -94,7 +94,7 @@ popupCardAdd.addEventListener('click', () => {
   openPopup(popupCard);
 })
 
-function cardAddReset () {
+function resetCardData () {
   cardNameEdit.value = "";
   cardLinkEdit.value = "";
 }
@@ -122,14 +122,14 @@ function addCard(evt) {
   cardContainer.append(cardElement);
 
   closePopup(popupCard);
-  cardAddReset(); 
+  resetCardData(); 
 }
 
 cardAddForm.addEventListener('submit', addCard);
 
 cardBtnExit.addEventListener('click', () => {
   closePopup(popupCard);
-  cardAddReset();
+  resetCardData();
 })
 
 // добавление карточек из массива
