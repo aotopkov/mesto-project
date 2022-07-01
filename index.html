@@ -22,59 +22,20 @@
                 <button type="button" class="profile__btn-edit"></button>
                 <p class="profile__data-about">Исследователь океана</p>
             </div>
-            <button type="button" class="profile__btn-add"></button>
+            <button type="button" class="card__btn-add"></button>
         </section>
         <section class="content">
             <ul class="cards">
-                <li class="card">
-                    <img src="./image/dubldom.jpg" alt="дом на сопке" class="card__image">
-                    <div class="card__info">
-                        <h2 class="card__name">Дубльдом Кольский</h2>
-                        <button type="button" class="card__like"></button>
-                    </div>
-                    <button type="button" class="card__delete"></button>
-                </li>
-                <li class="card">
-                    <img src="./image/hibiny.jpg" alt="Осенние горы Хибины" class="card__image">
-                    <div class="card__info">
-                        <h2 class="card__name">Золото в Хибинах</h2>
-                        <button type="button" class="card__like"></button>
-                    </div>
-                    <button type="button" class="card__delete"></button>
-                </li>
-                <li class="card">
-                    <img src="./image/ladoga.jpg" alt="на лодках по Ладожскому озеру" class="card__image">
-                    <div class="card__info">
-                        <h2 class="card__name">Ладожские шхеры</h2>
-                        <button type="button" class="card__like"></button>
-                    </div>
-                    <button type="button" class="card__delete"></button>
-                </li>
-                <li class="card">
-                    <img src="./image/osetia.jpg" alt="Снежные вершины гор и осень" class="card__image">
-                    <div class="card__info">
-                        <h2 class="card__name">Северная Осетия</h2>
-                        <button type="button" class="card__like"></button>
-                    </div>
-                    <button type="button" class="card__delete"></button>
-                </li>
-                <li class="card">
-                    <img src="./image/permskii.jpg" alt="Усьвинские столбы в Пермском крае" class="card__image">
-                    <div class="card__info">
-                        <h2 class="card__name">Пермский край</h2>
-                        <button type="button" class="card__like"></button>
-                    </div>
-                    <button type="button" class="card__delete"></button>
-                </li>
-                <li class="card">
-                    <img src="./image/crimea.jpg" alt="Новый свет, Крым" class="card__image">
-                    <div class="card__info">
-                        <h2 class="card__name">Крым</h2>
-                        <button type="button" class="card__like"></button>
-                    </div>
-                    <button type="button" class="card__delete"></button>
-                </li>
-            </ul>
+                <template class="template__card">
+                    <li class="card">
+                        <button class="card__full-btn"><img src="" alt="" class="card__image"></button>
+                        <div class="card__info">
+                            <h2 class="card__name"></h2>
+                            <button type="button" class="card__like"></button>
+                        </div>
+                        <button type="button" class="card__delete"></button>
+                    </li>
+                </template>
         </section>
     </main>
     <footer class="footer">
@@ -84,7 +45,7 @@
         <div class="popup__container">
             <form class="popup__forms popup__forms_section_profile">
                 <label class="popup__name">Редактировать профиль</label>
-                <input type="text" name="popup__profile-name" class="popup__form-text popup__profile-name" placeholder="введите имя">
+                <input type="text" name="popup__profile-name" class="popup__form-text popup__profile-name" placeholder="введите имя" required>
                 <input type="text" name="popup__profile-about" class="popup__form-text popup__profile-about" placeholder="о себе">
                 <button type="submit" class="popup__btn-save popup__btn-save_section_profile"><span>Сохранить</span></button>
             </form>
@@ -95,8 +56,8 @@
         <div class="popup__container">
             <form class="popup__forms popup__forms_section_card">
                 <label class="popup__name">Новое место</label>
-                <input type="text" name="popup__card-name" class="popup__form-text popup__card-name" placeholder="Название">
-                <input type="url" name="popup__card-link" class="popup__form-text popup__card-link" placeholder="Ссылка на картинку">
+                <input type="text" name="popup__card-name" class="popup__form-text popup__card-name" placeholder="Название" required>
+                <input type="url" name="popup__card-link" class="popup__form-text popup__card-link" placeholder="Ссылка на картинку" required>
                 <button type="submit" class="popup__btn-save popup__card-btn-save"><span>Создать</span></button>
             </form>
             <button type="button" class="popup__btn-exit popup__btn-exit_section_card"></button>
@@ -104,8 +65,8 @@
     </div>
     <div class="fullcard">
         <div class="fullcard__container">
-            <img src="./image/dubldom.jpg" alt="" srcset="" class="fullcard__img">
-            <p class="fullcard__name">Дубльдом</p>
+            <img src="" alt="" srcset="" class="fullcard__img">
+            <p class="fullcard__name"></p>
             <button type="button" class="fullcard__btn-exit"></button>
         </div>
     </div>
