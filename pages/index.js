@@ -47,7 +47,7 @@ const fullCardImg = document.querySelector('.fullcard__img');
 const cardContainer = document.querySelector('.cards');
 const templateCard = document.querySelector('.template__card').content;
 
-const btnExit = document.querySelectorAll('.popup__btn-exit');
+const buttonsExit = document.querySelectorAll('.popup__btn-exit');
 
 //открытие попапов
 function openPopup(popup) {
@@ -60,7 +60,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-btnExit.forEach((btn) => {
+buttonsExit.forEach((btn) => {
   const popup = btn.closest('.popup');
   btn.addEventListener('click', () => {closePopup(popup)}) 
 })
@@ -94,8 +94,9 @@ popupCardAdd.addEventListener('click', () => {
 function createCard (name, link) {
   const cardElement = templateCard.querySelector('.card').cloneNode(true);
   cardElement.querySelector('.card__name').textContent = name;
-  cardElement.querySelector('.card__image').setAttribute('src', link)
-  cardElement.querySelector('.card__image').setAttribute('alt', name)
+  const cardImage = cardElement.querySelector('.card__image');
+  cardImage.setAttribute('src', link);
+  cardImage.setAttribute('alt', name);
   cardElement.querySelector('.card__like').addEventListener('click', (evt) => {
     evt.target.classList.toggle('card__like_active');
   })
