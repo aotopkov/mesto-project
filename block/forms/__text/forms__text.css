@@ -1,4 +1,4 @@
-.popup__form-text {
+.forms__text {
     box-sizing: border-box;
     font-family: 'Inter';
     width: 100%;
@@ -11,28 +11,27 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.popup__form-text:focus {
+.forms__text:focus {
     outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 
-.popup__form-text::placeholder {
+.forms__text::placeholder {
     font-family: 'Inter';
 }
 
 
-.popup__form-text:first-of-type {
+.forms__text:first-of-type {
     margin-top: 54px;
 }
 
 
-.popup__form-text:last-of-type {
+.forms__text:last-of-type {
     margin-top: 30px;
 }
 
 @media screen and (max-width: 1280px) {
-    .popup__form-text:first-of-type {
+    .forms__text:first-of-type {
         margin-top: calc(75px + (54 - 75) * (100vw - 320px) / (1280 - 320));
     }
-    
 }

@@ -1,0 +1,14 @@
+.forms {
+    max-width: 358px;
+    max-height: 259px;
+    margin: 28px auto auto;
+}
+
+@media screen and (max-width: 1280px) {
+    .forms {
+        width: calc(238px + (358 - 238) * (100vw - 320px) / (1280 - 320));
+        height: calc(272px + (259 - 272) * (100vw - 320px) / (1280 - 320));
+        margin-top: calc(25px + (28 - 25) * (100vw - 320px) / (1280 - 320));
+    }
+    
+}

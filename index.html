@@ -43,22 +43,24 @@
     </footer>
     <div class="popup popup_section_profile">
         <div class="popup__container">
-            <form class="popup__forms popup__forms_section_profile">
+            <form class="forms" name="editprofile">
                 <label class="popup__name">Редактировать профиль</label>
-                <input type="text" name="popup__profile-name" class="popup__form-text popup__profile-name" placeholder="введите имя">
-                <input type="text" name="popup__profile-about" class="popup__form-text popup__profile-about" placeholder="о себе">
-                <button type="submit" class="popup__btn-save popup__btn-save_section_profile"><span>Сохранить</span></button>
+                <input type="text" name="name" class="forms__text" placeholder="введите имя" required>
+                <span class="popup__forms_error"></span>
+                <input type="text" name="about" class="forms__text" placeholder="о себе" required>
+                <span class="popup_error"></span>
+                <button type="submit" class="popup__btn-save"><span>Сохранить</span></button>
             </form>
             <button type="button" class="popup__btn-exit"></button>
         </div>
     </div>
     <div class="popup popup_section_card">
         <div class="popup__container">
-            <form class="popup__forms popup__forms_section_card">
+            <form class="forms" name="newcard">
                 <label class="popup__name">Новое место</label>
-                <input type="text" name="popup__card-name" class="popup__form-text popup__card-name" placeholder="Название">
-                <input type="url" name="popup__card-link" class="popup__form-text popup__card-link" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__btn-save popup__card-btn-save"><span>Создать</span></button>
+                <input type="text" name="name" class="forms__text" placeholder="Название">
+                <input type="url" name="link" class="forms__text" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__btn-save"><span>Создать</span></button>
             </form>
             <button type="button" class="popup__btn-exit"></button>
         </div>

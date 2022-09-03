@@ -26,20 +26,17 @@ const сards = [
   }
 ];
 
+const formEditProfile = document.forms.editprofile;
 const profileEditBtn = document.querySelector(".profile__btn-edit");
 const popupProfile = document.querySelector(".popup_section_profile");
 const profileName = document.querySelector(".profile__data-name");
 const profileAbout = document.querySelector(".profile__data-about");
-const profileNameEdit = document.querySelector(".popup__profile-name");
-const profileAboutEdit = document.querySelector(".popup__profile-about");
-const profileEditForm = document.querySelector('.popup__forms_section_profile')
 
-const popupCardAdd = document.querySelector('.card__btn-add')
+const formNewCard = document.forms.newcard;
+const popupCardAdd = document.querySelector('.card__btn-add');
 const popupCard = document.querySelector(".popup_section_card");
-const cardBtnExit = document.querySelector(".popup__btn-exit_section_card");
 const cardNameEdit = document.querySelector(".popup__card-name");
 const cardLinkEdit = document.querySelector(".popup__card-link");
-const cardAddForm = document.querySelector('.popup__forms_section_card')
 const fullCardPopup = document.querySelector('.fullcard');
 const fullCardName = document.querySelector('.fullcard__name');
 const fullCardImg = document.querySelector('.fullcard__img');
@@ -47,40 +44,49 @@ const fullCardImg = document.querySelector('.fullcard__img');
 const cardContainer = document.querySelector('.cards');
 const templateCard = document.querySelector('.template__card').content;
 
-const buttonsExit = document.querySelectorAll('.popup__btn-exit');
-
-//открытие попапов
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-}
-
-//закрытие попапов
+//Открытие и закрытие Попапов
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-buttonsExit.forEach((btn) => {
-  const popup = btn.closest('.popup');
-  btn.addEventListener('click', () => {closePopup(popup)}) 
+//закрытие окна по ESC 
+
+function escapeKey (evt) {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened')
+    closePopup(popupOpen)
+    document.removeEventListener('keydown', escapeKey)
+  }
+}
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', escapeKey)
+}
+
+document.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup__btn-exit') || evt.target.classList.contains('popup')) {
+    closePopup(evt.target.closest('.popup'))
+  }
 })
 
 //Profile Edit
 
 profileEditBtn.addEventListener('click', () => {
   openPopup(popupProfile); 
-  profileNameEdit.value = profileName.textContent;
-  profileAboutEdit.value = profileAbout.textContent;
+  formEditProfile.elements.name.value = profileName.textContent;
+  formEditProfile.elements.about.value = profileAbout.textContent;
 })
 
 function editProfile(evt) {
   evt.preventDefault();
-  profileName.textContent = profileNameEdit.value;
-  profileAbout.textContent = profileAboutEdit.value;
+  profileName.textContent = formEditProfile.elements.name.value;
+  profileAbout.textContent = formEditProfile.elements.about.value;
   closePopup(popupProfile)
 }
 
-profileEditForm.addEventListener("submit", editProfile);
+formEditProfile.addEventListener("submit", editProfile);
 
 
 //Card Add
@@ -114,12 +120,12 @@ function createCard (name, link) {
 
 function addCard(evt) {
   evt.preventDefault();
-  cardContainer.prepend(createCard(cardNameEdit.value, cardLinkEdit.value));
+  cardContainer.prepend(createCard(formNewCard.elements.name.value, formNewCard.elements.link.value));
   closePopup(popupCard);
   evt.target.reset(); 
 }
 
-cardAddForm.addEventListener('submit', addCard);
+formNewCard.addEventListener('submit', addCard);
 
 
 // добавление карточек из массива
