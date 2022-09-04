@@ -1,4 +1,4 @@
-.popup__name {
+.forms__name {
     margin: 0;
     width: 100%;
     font-weight: 900;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 1280px) {
-    .popup__name {
+    .forms__name {
        font-size: calc(18px + (24 - 18) * (100vw - 320px) / (1280 - 320));
        line-height: calc(22px + (29 - 22) * (100vw - 320px) / (1280 - 320));
     }

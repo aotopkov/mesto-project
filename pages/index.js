@@ -35,8 +35,6 @@ const profileAbout = document.querySelector(".profile__data-about");
 const formNewCard = document.forms.newcard;
 const popupCardAdd = document.querySelector('.card__btn-add');
 const popupCard = document.querySelector(".popup_section_card");
-const cardNameEdit = document.querySelector(".popup__card-name");
-const cardLinkEdit = document.querySelector(".popup__card-link");
 const fullCardPopup = document.querySelector('.fullcard');
 const fullCardName = document.querySelector('.fullcard__name');
 const fullCardImg = document.querySelector('.fullcard__img');
@@ -52,17 +50,17 @@ function closePopup(popup) {
 
 //закрытие окна по ESC 
 
-function escapeKey (evt) {
+function closeFromEscKey (evt) {
   if (evt.key === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened')
     closePopup(popupOpen)
-    document.removeEventListener('keydown', escapeKey)
+    document.removeEventListener('keydown', closeFromEscKey)
   }
 }
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', escapeKey)
+  document.addEventListener('keydown', closeFromEscKey)
 }
 
 document.addEventListener('click', (evt) => {
@@ -75,14 +73,15 @@ document.addEventListener('click', (evt) => {
 
 profileEditBtn.addEventListener('click', () => {
   openPopup(popupProfile); 
-  formEditProfile.elements.name.value = profileName.textContent;
-  formEditProfile.elements.about.value = profileAbout.textContent;
+  formEditProfile.elements.name__input.value = profileName.textContent;
+  formEditProfile.elements.about__input.value = profileAbout.textContent;
+  enableValidation()
 })
 
 function editProfile(evt) {
   evt.preventDefault();
-  profileName.textContent = formEditProfile.elements.name.value;
-  profileAbout.textContent = formEditProfile.elements.about.value;
+  profileName.textContent = formEditProfile.elements.name__input.value;
+  profileAbout.textContent = formEditProfile.elements.about__input.value;
   closePopup(popupProfile)
 }
 
@@ -93,6 +92,7 @@ formEditProfile.addEventListener("submit", editProfile);
 
 popupCardAdd.addEventListener('click', () => {
   openPopup(popupCard);
+  enableValidation()
 })
 
 
@@ -134,3 +134,72 @@ formNewCard.addEventListener('submit', addCard);
 сards.forEach(element => {
   cardContainer.append(createCard(element.name, element.link));
 });
+
+
+//Валидация форм
+
+function showInputError (errorElement, errorMessage) {
+  errorElement.textContent = errorMessage
+}
+
+function hideInputError (errorElement) {
+  errorElement.textContent = '';
+}
+
+function isThisInvalid (inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid
+  })
+}
+
+function toggleButtonState (buttonElement, inputList) {
+  if (isThisInvalid(inputList)) {
+    buttonElement.classList.add('forms__submit_inactive')
+    buttonElement.disabled = true;
+  }
+  else {
+    buttonElement.classList.remove('forms__submit_inactive')
+    buttonElement.disabled = false;
+  }
+}
+
+
+const checkInputValidity = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}_error`)
+  if(inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage)
+  }
+  else {
+    inputElement.setCustomValidity('')
+  }
+
+  if(!inputElement.validity.valid) {
+    showInputError(errorElement, inputElement.validationMessage)
+  }
+  else {
+    hideInputError(errorElement)
+  }
+}
+
+const setEventListeners = (formElement, inputElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.forms__input'))
+  const buttonElement = formElement.querySelector('.forms__submit')
+  toggleButtonState(buttonElement, inputList)
+  inputElement.addEventListener('input', () => {
+    checkInputValidity(formElement, inputElement)
+    toggleButtonState(buttonElement, inputList)
+  })
+}
+
+
+
+ const enableValidation = () => {
+   const formList = Array.from(document.querySelectorAll(".forms"));
+   formList.forEach((formElement) => {
+     const inputList = Array.from(formElement.querySelectorAll(".forms__input"));
+     inputList.forEach((inputElement) => {
+       setEventListeners(formElement, inputElement)
+     });
+   });
+ };
+
