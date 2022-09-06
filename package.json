@@ -1,0 +1,19 @@
+{
+  "name": "mesto-project",
+  "version": "0.0.1",
+  "description": "Второй спринт. Адаптивная вёрстка по макету в Figma сайта \"Mesto\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aotopkov/mesto-project.git"
+  },
+  "author": "Aleksandr Otopkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aotopkov/mesto-project/issues"
+  },
+  "homepage": "https://github.com/aotopkov/mesto-project#readme"
+}
