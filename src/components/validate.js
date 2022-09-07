@@ -14,7 +14,7 @@ function showInputError (errorElement, errorMessage) {
     })
   }
   
-  function toggleButtonState (buttonElement, inputList) {
+  export function toggleButtonState (buttonElement, inputList) {
     if (isThisInvalid(inputList)) {
       buttonElement.classList.add('forms__submit_inactive')
       buttonElement.disabled = true;
@@ -43,23 +43,26 @@ function showInputError (errorElement, errorMessage) {
     }
   }
   
-  const setEventListeners = (formElement, inputList, inputElement) => {
-    const buttonElement = formElement.querySelector('.forms__submit')
+  const setEventListeners = (formElement, inputList, inputElement, settings) => {
+    const buttonElement = formElement.querySelector(settings.submitButtonSelector)
     toggleButtonState(buttonElement, inputList)
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement)
+      toggleButtonState(buttonElement, inputList)
+    })
+    formElement.addEventListener('submit', () => {
       toggleButtonState(buttonElement, inputList)
     })
   }
   
   
   
-  export function enableValidation () {
-     const formList = Array.from(document.querySelectorAll(".forms"));
+  export function enableValidation (settings) {
+     const formList = Array.from(document.querySelectorAll(settings.formSelector));
      formList.forEach((formElement) => {
-       const inputList = Array.from(formElement.querySelectorAll(".forms__input"));
+       const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
        inputList.forEach((inputElement) => {
-         setEventListeners(formElement, inputList, inputElement)
+         setEventListeners(formElement, inputList, inputElement, settings)
        });
      });
    };

@@ -1,13 +1,13 @@
 export const formNewCard = document.forms.newcard;
-const cardContainer = document.querySelector('.cards');
+export const cardContainer = document.querySelector('.cards');
 const templateCard = document.querySelector('.template__card').content;
 const fullCardPopup = document.querySelector('.fullcard');
 const fullCardName = document.querySelector('.fullcard__name');
 const fullCardImg = document.querySelector('.fullcard__img');
 
-import {openPopup, closePopup, popupCard} from './modal.js'
+import {openPopup} from './modal.js'
 
-function createCard (name, link) {
+export function createCard (name, link) {
     const cardElement = templateCard.querySelector('.card').cloneNode(true);
     cardElement.querySelector('.card__name').textContent = name;
     const cardImage = cardElement.querySelector('.card__image');
@@ -26,13 +26,6 @@ function createCard (name, link) {
       fullCardImg.setAttribute('alt', name)
     })
     return cardElement;
-  }
-  
-export function addCard(evt) {
-    evt.preventDefault();
-    cardContainer.prepend(createCard(formNewCard.elements.name.value, formNewCard.elements.link.value));
-    closePopup(popupCard, evt);
-    evt.target.reset(); 
   }
 
 
