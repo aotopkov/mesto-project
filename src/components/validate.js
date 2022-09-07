@@ -14,13 +14,13 @@ function showInputError (errorElement, errorMessage) {
     })
   }
   
-  export function toggleButtonState (buttonElement, inputList) {
+  export function toggleButtonState (buttonElement, inputList, settings) {
     if (isThisInvalid(inputList)) {
-      buttonElement.classList.add('forms__submit_inactive')
+      buttonElement.classList.add(settings.submitButtonInactive)
       buttonElement.disabled = true;
     }
     else {
-      buttonElement.classList.remove('forms__submit_inactive')
+      buttonElement.classList.remove(settings.submitButtonInactive)
       buttonElement.disabled = false;
     }
   }
@@ -45,13 +45,13 @@ function showInputError (errorElement, errorMessage) {
   
   const setEventListeners = (formElement, inputList, inputElement, settings) => {
     const buttonElement = formElement.querySelector(settings.submitButtonSelector)
-    toggleButtonState(buttonElement, inputList)
+    toggleButtonState(buttonElement, inputList, settings)
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement)
-      toggleButtonState(buttonElement, inputList)
+      toggleButtonState(buttonElement, inputList, settings)
     })
     formElement.addEventListener('submit', () => {
-      toggleButtonState(buttonElement, inputList)
+      toggleButtonState(buttonElement, inputList, settings)
     })
   }
   

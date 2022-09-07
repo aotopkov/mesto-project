@@ -54,8 +54,11 @@ function addCard(evt) {
 
 formNewCard.addEventListener("submit", addCard);
 
+//подключение валидации
+
 enableValidation({
     formSelector: '.forms',
     inputSelector: '.forms__input',
-    submitButtonSelector: '.forms__submit'
+    submitButtonSelector: '.forms__submit',
+    submitButtonInactive: '.forms__submit_inactive'
 });
