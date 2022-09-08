@@ -3,6 +3,7 @@
 export function closePopup(popup, evt) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeFromEscKey);
+  document.removeEventListener("click", closeFromOverlay);
 }
 
 //закрытие окна по ESC
@@ -17,6 +18,8 @@ function closeFromEscKey(evt) {
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeFromEscKey);
+  document.addEventListener("click", closeFromOverlay);
+  
 }
 
 export function closeFromOverlay (evt) {

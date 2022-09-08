@@ -12,11 +12,6 @@ const profileAbout = document.querySelector(".profile__data-about");
 const popupProfile = document.querySelector(".popup_section_profile");
 const popupCard = document.querySelector(".popup_section_card");
 
-
-document.addEventListener("click", (evt) => {
-  closeFromOverlay(evt);
-});
-
 //обработка формы изменения профиля
 
 profileEditBtn.addEventListener("click", () => {
@@ -50,6 +45,8 @@ function addCard(evt) {
     cardContainer.prepend(createCard(formNewCard.elements.name.value, formNewCard.elements.link.value));
     closePopup(popupCard, evt);
     evt.target.reset()
+    formNewCard.elements.submit.disabled = true;
+    formNewCard.elements.submit.classList.add = 'forms__submit_inactive';
   }
 
 formNewCard.addEventListener("submit", addCard);

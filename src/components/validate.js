@@ -50,9 +50,6 @@ function showInputError (errorElement, errorMessage) {
       checkInputValidity(formElement, inputElement)
       toggleButtonState(buttonElement, inputList, settings)
     })
-    formElement.addEventListener('submit', () => {
-      toggleButtonState(buttonElement, inputList, settings)
-    })
   }
   
   
