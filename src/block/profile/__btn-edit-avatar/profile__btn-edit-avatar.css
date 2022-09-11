@@ -14,7 +14,7 @@
     transition: 0.25s ease-in-out;
     opacity: 0;
     cursor: pointer;
-    z-index: 2;
+    z-index: 0;
 }
 
 .profile__btn-edit-avatar:hover {
