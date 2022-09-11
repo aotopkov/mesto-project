@@ -15,7 +15,10 @@
     </header>
     <main>
         <section class="profile">
+            <div class="profile__avatar-container">
             <img src="<%=require('./image/avatar.jpg')%>" alt="фотография профиля" class="profile__avatar">
+            <button type="button" class="profile__btn-edit-avatar"></button>
+            </div>
             <div class="profile__data">
                 <h1 class="profile__data-name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__btn-edit"></button>
@@ -30,7 +33,9 @@
                         <button class="card__full-btn"><img src="" alt="" class="card__image"></button>
                         <div class="card__info">
                             <h2 class="card__name"></h2>
-                            <button type="button" class="card__like"></button>
+                            <div class="card__like-container"><button type="button" class="card__like"></button>
+                            <p class="card__like-counter"></p></div>
+                            
                         </div>
                         <button type="button" class="card__delete"></button>
                     </li>
@@ -56,7 +61,7 @@
                         required>
                     <span class="forms__input_error profile__about_error"></span>
                 </div>
-                <button type="submit" class="forms__submit"><span>Сохранить</span></button>
+                <button type="submit" name="submit" class="forms__submit"><span>Сохранить</span></button>
             </form>
             <button type="button" class="popup__btn-exit"></button>
         </div>
@@ -80,6 +85,27 @@
         <div class="fullcard__container">
             <img src="" alt="" srcset="" class="fullcard__img">
             <p class="fullcard__name"></p>
+            <button type="button" class="popup__btn-exit"></button>
+        </div>
+    </div>
+    <div class="popup popup__card-delete">
+        <div class="popup__container">
+            <form class="forms" name="carddelete">
+                <label class="forms__name">Вы уверены?</label>
+                <button type="button" class="forms__submit forms__card-delete-btn" name="submit">Да</button>
+            </form>
+            <button type="button" class="popup__btn-exit"></button>
+        </div>
+    </div>
+    <div class="popup popup__avatar-edit">
+        <div class="popup__container">
+            <form class="forms" name="avataredit">
+                <label class="forms__name">Обновить аватар</label>
+                <input type="url" name="link" id="avataredit__link" class="forms__input" placeholder="Ссылка на картинку"
+                    required>
+                <span class="forms__input_error avataredit__link_error"></span>
+                <button type="submit" name="submit" class="forms__submit"><span>Сохранить</span></button>
+            </form>
             <button type="button" class="popup__btn-exit"></button>
         </div>
     </div>

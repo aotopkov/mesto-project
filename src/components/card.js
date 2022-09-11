@@ -1,62 +1,81 @@
 export const formNewCard = document.forms.newcard;
-export const cardContainer = document.querySelector('.cards');
-const templateCard = document.querySelector('.template__card').content;
-const fullCardPopup = document.querySelector('.fullcard');
-const fullCardName = document.querySelector('.fullcard__name');
-const fullCardImg = document.querySelector('.fullcard__img');
+export const cardContainer = document.querySelector(".cards");
+const templateCard = document.querySelector(".template__card").content;
+const fullCardPopup = document.querySelector(".fullcard");
+const fullCardName = document.querySelector(".fullcard__name");
+const fullCardImg = document.querySelector(".fullcard__img");
+const popupCardDelete = document.querySelector(".popup__card-delete");
 
-import {openPopup} from './modal.js'
 
-export function createCard (name, link) {
-    const cardElement = templateCard.querySelector('.card').cloneNode(true);
-    cardElement.querySelector('.card__name').textContent = name;
-    const cardImage = cardElement.querySelector('.card__image');
-    cardImage.setAttribute('src', link);
-    cardImage.setAttribute('alt', name);
-    cardElement.querySelector('.card__like').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('card__like_active');
+import { openPopup, closePopup } from "./modal.js";
+import { profileName } from "./index.js";
+import { deleteCard, addLike, removeLike } from "./api.js";
+
+export function createCard(name, link, likes, owner, id) {
+  const cardElement = templateCard.querySelector(".card").cloneNode(true);
+  cardElement.id = id;
+  cardElement.querySelector(".card__name").textContent = name;
+  const cardImage = cardElement.querySelector(".card__image");
+  cardImage.setAttribute("src", link);
+  cardImage.setAttribute("alt", name);
+  const cardLikebtn = cardElement.querySelector(".card__like");
+  const cardLikeCounter = cardElement.querySelector(".card__like-counter");
+  cardLikeCounter.textContent = likes.length;
+  if (likes.some(elem => { if(elem.name == profileName.textContent){return true}})) {
+    cardLikebtn.classList.add("card__like_active")
+  }
+  cardLikebtn.addEventListener("click", (evt) => {
+    if (!evt.target.classList.contains("card__like_active")) {
+      addLike(cardElement.id)
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .then((res) => {
+          evt.target.classList.add("card__like_active");
+          cardLikeCounter.textContent = res.likes.length;
+        });
+    } else {
+      removeLike(cardElement.id)
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .then((res) => {
+          evt.target.classList.remove("card__like_active");
+          cardLikeCounter.textContent = res.likes.length;
+        });
+    }
+  });
+  let cardDeletebtn = cardElement.querySelector(".card__delete");
+  if (owner !== profileName.textContent) {
+    cardDeletebtn.classList.add("card__delete_hidden");
+  }
+  else {cardDeletebtn.addEventListener("click", () => {
+    deleteCard(id)
+    .then((res) => {
+      if (res.ok) {
+        cardElement.closest(".card").remove();
+        closePopup(popupCardDelete)
+      }
+      else {
+      return Promise.reject(`Ошибка: ${res.status}`)}
     })
-    cardElement.querySelector('.card__delete').addEventListener('click', () => {
-      cardElement.closest('.card').remove();
-    })
-    cardElement.querySelector('.card__full-btn').addEventListener('click', () => {
-      openPopup(fullCardPopup);
-      fullCardName.textContent = name;
-      fullCardImg.setAttribute('src', link)
-      fullCardImg.setAttribute('alt', name)
-    })
-    return cardElement;
+    .catch((err) => {
+      console.log(err);});
+  });
   }
 
-
-// Массив карточек
-const сards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
-  сards.forEach(element => {
-    cardContainer.append(createCard(element.name, element.link));
+  cardElement.querySelector(".card__full-btn").addEventListener("click", () => {
+    openPopup(fullCardPopup);
+    fullCardName.textContent = name;
+    fullCardImg.setAttribute("src", link);
+    fullCardImg.setAttribute("alt", name);
   });
+  return cardElement;
+}
+
