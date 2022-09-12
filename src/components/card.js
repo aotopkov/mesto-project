@@ -28,27 +28,19 @@ export function createCard(name, link, likes, owner, id) {
     if (!evt.target.classList.contains("card__like_active")) {
       addLike(cardElement.id)
         .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Ошибка: ${res.status}`)
-        })
-        .then((res) => {
           evt.target.classList.add("card__like_active");
           cardLikeCounter.textContent = res.likes.length;
-        });
+        })
+        .catch((err) => {
+          console.log(err);});
     } else {
       removeLike(cardElement.id)
         .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Ошибка: ${res.status}`)
-        })
-        .then((res) => {
           evt.target.classList.remove("card__like_active");
           cardLikeCounter.textContent = res.likes.length;
-        });
+        })
+        .catch((err) => {
+          console.log(err);});
     }
   });
   let cardDeletebtn = cardElement.querySelector(".card__delete");
@@ -57,13 +49,9 @@ export function createCard(name, link, likes, owner, id) {
   }
   else {cardDeletebtn.addEventListener("click", () => {
     deleteCard(id)
-    .then((res) => {
-      if (res.ok) {
+    .then(() => {
         cardElement.closest(".card").remove();
         closePopup(popupCardDelete)
-      }
-      else {
-      return Promise.reject(`Ошибка: ${res.status}`)}
     })
     .catch((err) => {
       console.log(err);});
