@@ -2,7 +2,7 @@ import "../pages/index.css";
 import { openPopup, closePopup } from "./modal.js";
 import { enableValidation } from "./validate.js";
 import { createCard, formNewCard, cardContainer } from "./card.js";
-import { getUser, postUser, getCards, postNewCard, editAvatar, checkResponce } from "./api";
+import { getUser, postUser, getCards, postNewCard, editAvatar} from "./api";
 
 const profileEditBtn = document.querySelector(".profile__btn-edit");
 const popupCardAdd = document.querySelector(".card__btn-add");
