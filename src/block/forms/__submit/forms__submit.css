@@ -22,16 +22,16 @@
     opacity: 0.6;
 }
 
-.forms__submit:disabled {
+/*.forms__submit:disabled {
     opacity: 0.2;
     background-color: #fff;
     color: #000;
     cursor: default;
     border: 2px solid #000;
-}
+}*/
 
 @media screen and (max-width: 1280px) {
-    .forms__btn-save {
+    .forms__submit {
         font-size: calc(14px + (18 - 14) * (100vw - 320px) / (1280 - 320));
         line-height: calc(17px + (22 - 17) * (100vw - 320px) / (1280 - 320));
         margin-top: calc(45px + (48 - 45) * (100vw - 320px) / (1280 - 320));
